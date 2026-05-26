@@ -3,7 +3,7 @@
 Issue-driven task bus — 围绕螺旋执行协议运转的业务任务总线
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/opc-x/opc-x/main/docs/spiral.svg" width="420" alt="OPC-X 螺旋执行协议" />
+  <img src="https://raw.githubusercontent.com/opc-x/taskbus/main/docs/taskbus-flow.svg" width="420" alt="taskbus 完整架构：战略拆解 → 螺旋执行" />
 </div>
 
 ## 是什么
@@ -11,10 +11,16 @@ Issue-driven task bus — 围绕螺旋执行协议运转的业务任务总线
 taskbus 以 GitHub Issue 为原子任务单元，用 LLM 意图识别驱动 skill 路由，按螺旋执行协议推进业务目标。
 
 ```
-靶心（业务目标）
-      │
+战略意图（自然语言）
+      │ LLM 语义拆解
+      ↓
+目标01  目标02  [当前]  目标04  目标∞
+                 │
+                 ↓ 进入螺旋
+              靶心 Vision
+                 │
 每圈 = 一批 issue 闭环
-      │
+                 │
 决策 → 需求 → 执行 → 验收 → 反馈 → 下一圈
 O01     O03   O04-07   O08    O10
 ```
